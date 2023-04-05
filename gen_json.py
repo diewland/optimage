@@ -7,8 +7,8 @@ IMG     = "https://diewland.github.io/optimage/assets/cover.png"
 ENGINE  = "Jigsaw Engine"
 
 OUTPUT_DIR  = "./json"
-FROM_ID     = 1
-TO_ID       = 100
+FROM_ID     = 0
+TO_ID       = 99
 
 if __name__ == "__main__":
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     for id in range(FROM_ID, TO_ID+1):
 
         # update data
-        metadata["name"] = "{} #{}".format(NAME, id)
+        metadata["name"] = "{} #{:02}".format(NAME, id)
 
         # debug
         #print(metadata)

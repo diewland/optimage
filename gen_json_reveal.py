@@ -1,0 +1,35 @@
+import json
+from pprint import pprint as pp
+ 
+NAME    = "OptiMage"
+DESC    = "Draw prizes every 13th of every month, worth 13$, 48 times, numbers from the website. https://cryptofees.info/ decimal number ETH 1Dayfees"
+IMG     = "https://diewland.github.io/optimage/assets/{}.png"
+ENGINE  = "Jigsaw Engine"
+
+OUTPUT_DIR  = "./json"
+FROM_ID     = 0
+TO_ID       = 99
+
+if __name__ == "__main__":
+
+    # craft metadata
+    metadata = {
+      "name": "***",
+      "description": DESC,
+      "image": "***",
+      "compiler": ENGINE,
+    }
+
+    # build json + write to file
+    for id in range(FROM_ID, TO_ID+1):
+
+        # update data
+        metadata["name"] = "{} #{:02}".format(NAME, id)
+        metadata["image"] = IMG.format(id)
+
+        # debug
+        #print(metadata)
+
+        # write file
+        with open("./{}/{}.json".format(OUTPUT_DIR, id), "w") as f:
+            json.dump(metadata, f, ensure_ascii=False)
